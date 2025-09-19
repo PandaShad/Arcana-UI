@@ -13,7 +13,8 @@
 		"lint": "eslint . && prettier --check .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"registry:build": "pnpm shadcn-svelte registry build"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
@@ -35,6 +36,7 @@
 		"mdsvex": "^0.12.3",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
+		"shadcn-svelte": "^1.0.7",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwind-merge": "^3.3.1",

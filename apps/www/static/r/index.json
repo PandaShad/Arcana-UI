@@ -1,0 +1,10 @@
+[
+	{
+		"name": "marquee",
+		"title": "Marquee",
+		"type": "registry:ui",
+		"description": "An infinite scrolling component that can be used to display text, images, or other content in a continuous loop.",
+		"registryDependencies": [],
+		"relativeUrl": "marquee.json"
+	}
+]

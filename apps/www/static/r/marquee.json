@@ -1,0 +1,38 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "marquee",
+	"title": "Marquee",
+	"type": "registry:ui",
+	"description": "An infinite scrolling component that can be used to display text, images, or other content in a continuous loop.",
+	"css": {
+		"@keyframes marquee": {
+			"from": {
+				"transform": "translateX(0)"
+			},
+			"to": {
+				"transform": "translateX(calc(-100% - var(--gap)))"
+			}
+		},
+		"@keyframes marquee-vertical": {
+			"from": {
+				"transform": "translateY(0)"
+			},
+			"to": {
+				"transform": "translateY(calc(-100% - var(--gap)))"
+			}
+		}
+	},
+	"cssVars": {
+		"theme": {
+			"animate-marquee": "marquee var(--duration) infinite linear",
+			"animate-marquee-vertical": "marquee-vertical var(--duration) linear infinite"
+		}
+	},
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n\timport { cn, type WithElementRef } from '$UTILS$';\n\timport type { HTMLAttributes } from 'svelte/elements';\n\n\tlet {\n\t\tref = $bindable(null),\n\t\tclass: className,\n\t\treverse = false,\n\t\tpauseOnHover = false,\n\t\tchildren,\n\t\tvertical = false,\n\t\trepeat = 4,\n\t\t...restProps\n\t}: WithElementRef<HTMLAttributes<HTMLDivElement>> & {\n\t\t/**\n\t\t * Whether to reverse the animation direction\n\t\t * @default false\n\t\t */\n\t\treverse?: boolean;\n\t\t/**\n\t\t * Whether to pause the animation on hover\n\t\t * @default false\n\t\t */\n\t\tpauseOnHover?: boolean;\n\t\t/**\n\t\t * Whether to animate vertically instead of horizontally\n\t\t * @default false\n\t\t */\n\t\tvertical?: boolean;\n\t\t/**\n\t\t * Number of times to repeat the content\n\t\t * @default 4\n\t\t */\n\t\trepeat?: number;\n\t} = $props();\n</script>\n\n<div\n\tbind:this={ref}\n\t{...restProps}\n\tclass={cn(\n\t\t'group flex overflow-hidden p-2 [--duration:20s] [--gap:1rem] [gap:var(--gap)]',\n\t\tvertical ? 'flex-col' : 'flex-row',\n\t\tclassName\n\t)}\n>\n\t{#each Array.from({ length: repeat }) as _, index (index)}\n\t\t<div\n\t\t\tclass={cn(\n\t\t\t\t'flex shrink-0 justify-around [gap:var(--gap)]',\n\t\t\t\tvertical\n\t\t\t\t\t? 'animate-marquee-vertical flex-col'\n\t\t\t\t\t: 'animate-marquee flex-row',\n\t\t\t\tpauseOnHover ? 'group-hover:[animation-play-state:paused]' : '',\n\t\t\t\treverse ? '[animation-direction:reverse]' : ''\n\t\t\t)}\n\t\t>\n\t\t\t{@render children?.()}\n\t\t</div>\n\t{/each}\n</div>\n",
+			"type": "registry:ui",
+			"target": "marquee.svelte"
+		}
+	]
+}
