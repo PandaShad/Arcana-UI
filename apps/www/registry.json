@@ -39,6 +39,19 @@
           }
         }
       }
+    },
+    {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Word Rotate",
+      "description": "A text component that rotates through a list of words with a fade animation.",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/word-rotate/word-rotate.svelte",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
