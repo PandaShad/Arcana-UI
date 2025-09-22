@@ -1,6 +1,7 @@
 <script lang="ts">
-	import Marquee from '$lib/registry/ui/marquee/marquee.svelte';
-	import WordRotate from '$lib/registry/ui/word-rotate/word-rotate.svelte';
+	import Marquee from '$lib/registry/ui/components/marquee/marquee.svelte';
+	import AuroraText from '$lib/registry/ui/text-animations/aurora-text/aurora-text.svelte';
+	import WordRotate from '$lib/registry/ui/text-animations/word-rotate/word-rotate.svelte';
 	import { cn } from '$lib/utils';
 	const reviews = [
 		{
@@ -132,3 +133,7 @@
 	class="text-4xl font-bold text-black dark:text-white"
 	words={['Word', 'Rotate']}
 />
+
+<h1 class="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
+	Ship <AuroraText>beautiful</AuroraText>
+</h1>

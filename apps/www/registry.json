@@ -11,6 +11,10 @@
       "registryDependencies": [],
       "files": [
         {
+          "path": "src/lib/registry/ui/components/marquee/index.ts",
+          "type": "registry:file"
+        },
+        {
           "path": "src/lib/registry/ui/marquee/marquee.svelte",
           "type": "registry:ui"
         }
@@ -48,7 +52,28 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "src/lib/registry/ui/word-rotate/word-rotate.svelte",
+          "path": "src/lib/registry/ui/text-animations/word-rotate/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/text-animations/word-rotate/word-rotate.svelte",
+          "type": "registry:ui"
+        }
+      ]
+    },
+{
+      "name": "aurora-text",
+      "type": "registry:ui",
+      "title": "Aurora Text",
+      "description": "A text component that displays a shimmering aurora effect.",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/text-animations/aurora-text/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/text-animations/aurora-text/aurora-text.svelte",
           "type": "registry:ui"
         }
       ]
