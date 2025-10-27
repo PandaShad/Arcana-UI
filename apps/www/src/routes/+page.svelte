@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Marquee from '$lib/registry/ui/components/marquee/marquee.svelte';
+	import AnimatedShinyText from '$lib/registry/ui/text-animations/animated-shiny-text/animated-shiny-text.svelte';
 	import AuroraText from '$lib/registry/ui/text-animations/aurora-text/aurora-text.svelte';
-	import WordRotate from '$lib/registry/ui/text-animations/word-rotate/word-rotate.svelte';
+	import TypingAnimation from '$lib/registry/ui/text-animations/typing-animation/typing-animation.svelte';
+	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 	import { cn } from '$lib/utils';
+	import NumberTicker from '$lib/registry/ui/text-animations/number-ticker/number-ticker.svelte';
 	const reviews = [
 		{
 			name: 'Jack',
@@ -129,11 +132,102 @@
 	></div>
 </div>
 
-<WordRotate
+<!-- <WordRotate
 	class="text-4xl font-bold text-black dark:text-white"
 	words={['Word', 'Rotate']}
-/>
+/> -->
 
 <h1 class="text-4xl font-bold tracking-tighter md:text-5xl lg:text-7xl">
 	Ship <AuroraText>beautiful</AuroraText>
 </h1>
+
+<div class="z-10 flex min-h-64 items-center justify-center">
+	<div
+		class={cn(
+			'group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800'
+		)}
+	>
+		<AnimatedShinyText
+			shimmerWidth={200}
+			class="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400"
+		>
+			<span>✨ Introducing Magic UI</span>
+			<ArrowRight
+				class="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5"
+			/>
+		</AnimatedShinyText>
+	</div>
+</div>
+
+<!-- Typing Animation Examples -->
+<div class="flex flex-col gap-8 py-12 items-center">
+	<h2 class="text-2xl font-bold">Typing Animation Examples</h2>
+
+	<!-- Basic typing animation -->
+	<TypingAnimation
+		text="Welcome to the future of UI components!"
+		class="text-2xl font-semibold"
+	/>
+
+	<!-- Typing animation with custom duration -->
+	<TypingAnimation
+		text="This types slower..."
+		duration={200}
+		class="text-lg text-gray-600 dark:text-gray-400"
+	/>
+
+	<!-- Typing animation with delay -->
+	<TypingAnimation
+		text="This has a 1 second delay before starting"
+		delay={1000}
+		duration={80}
+		class="text-lg text-blue-600 dark:text-blue-400"
+	/>
+
+	<!-- Typing animation with view trigger -->
+	<TypingAnimation
+		text="This starts when you scroll to it!"
+		startOnView={true}
+		duration={60}
+		class="text-xl font-bold text-green-600 dark:text-green-400"
+	/>
+
+	<!-- Different HTML element -->
+	<TypingAnimation
+		text="This is rendered as an h1 element"
+		as="h1"
+		duration={90}
+		class="text-3xl font-extrabold text-purple-600 dark:text-purple-400"
+	/>
+
+	<!-- With motion props for additional effects -->
+	<TypingAnimation
+		text="This has motion effects too!"
+		motionProps={{ scale: [0.8, 1], opacity: [0, 1] }}
+		duration={100}
+		delay={500}
+		class="text-xl font-semibold text-orange-600 dark:text-orange-400"
+	/>
+</div>
+
+<div class="grid w-full grid-cols-1 gap-12 py-12 md:grid-cols-2">
+	<div class="flex flex-col gap-8 items-center">
+		<h2 class="text-2xl font-bold">Number Ticker Examples Up</h2>
+		<NumberTicker
+			value={100}
+			class="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"
+		/>
+	</div>
+	<div class="flex flex-col gap-8 items-center">
+		<h2 class="text-2xl font-bold">Number Ticker Examples Down</h2>
+		<NumberTicker
+			value={100}
+			direction="down"
+			class="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"
+		/>
+	</div>
+	<div class="flex flex-col gap-8 items-center">
+		<h2 class="text-2xl font-bold">Number Ticker Examples Default</h2>
+		<NumberTicker value={100} />
+	</div>
+</div>

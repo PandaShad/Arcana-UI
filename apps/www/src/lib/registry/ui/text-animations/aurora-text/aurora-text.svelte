@@ -31,7 +31,7 @@
 	<span class="sr-only">{@render children?.()}</span>
 	<span
 		class="relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent"
-		style={`background-image: linear-gradient(135deg, ${colors.join(', ')}, ${colors[0]})`}
+		style={`background-image: linear-gradient(135deg, ${colors.join(', ')}, ${colors[0]}); WebkitBackgroundClip: text; WebkitTextFillColor: "transparent"; animationDuration: ${10 / speed}s;`}
 	>
 		{@render children?.()}
 	</span>
