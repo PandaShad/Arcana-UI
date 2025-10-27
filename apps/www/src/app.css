@@ -114,6 +114,7 @@
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-shiny-text: shiny-text 8s infinite;
 }
 
 @layer base {
@@ -170,5 +171,19 @@
 
   to {
     transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes shiny-text {
+
+  0%,
+  90%,
+  100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;
+  }
+
+  30%,
+  60% {
+    background-position: calc(100% + var(--shiny-width)) 0;
   }
 }

@@ -61,7 +61,7 @@
         }
       ]
     },
-{
+    {
       "name": "aurora-text",
       "type": "registry:ui",
       "title": "Aurora Text",
@@ -74,6 +74,23 @@
         },
         {
           "path": "src/lib/registry/ui/text-animations/aurora-text/aurora-text.svelte",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "title": "Number Ticker",
+      "description": "A text component that animates numbers counting up or down with a smooth ticker effect.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/text-animations/number-ticker/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/text-animations/number-ticker/number-ticker.svelte",
           "type": "registry:ui"
         }
       ]

@@ -7,19 +7,17 @@ import prettier from 'eslint-config-prettier';
 export const config = ts.config(
 	js.configs.recommended,
 	...ts.configs.recommended,
-	...svelte.configs.recommended,
+	...svelte.configs['flat/recommended'],
 	prettier,
-	...svelte.configs.prettier,
+	...svelte.configs['flat/prettier'],
 	{
 		languageOptions: {
 			globals: {
 				...globals.browser,
 				...globals.node
-			},
-			rules: {
-				'no-undef': 'off'
 			}
-		}
+		},
+		rules: { 'no-undef': 'off' }
 	},
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
@@ -30,6 +28,12 @@ export const config = ts.config(
 				extraFileExtensions: ['.svelte'],
 				parser: ts.parser
 			}
+		},
+		rules: {
+			'@typescript-eslint/no-unused-vars': [
+				'error',
+				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+			]
 		}
 	}
 );
