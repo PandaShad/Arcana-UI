@@ -4,6 +4,28 @@
   "homepage": "https://arcana-ui.com",
   "items": [
     {
+      "name": "bento-grid",
+      "type": "registry:ui",
+      "title": "Bento Grid",
+      "description": "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
+      "registryDependencies": ["button"],
+      "dependencies": ["@lucide/svelte"],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/layouts/bento-grid/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/layouts/bento-grid/bento-grid.svelte",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/registry/ui/layouts/bento-grid/bento-card.svelte",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "border-beam",
       "type": "registry:ui",
       "title": "Border Beam",

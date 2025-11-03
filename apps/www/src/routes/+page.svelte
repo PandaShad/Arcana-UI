@@ -16,9 +16,20 @@
 		CardTitle
 	} from '@/components/ui/card';
 	import { Button } from '@/components/ui/button';
-	import { Play, SkipBack, SkipForward } from '@lucide/svelte/icons';
+	import {
+		BellIcon,
+		CalendarIcon,
+		FileInputIcon,
+		FileTextIcon,
+		GlobeIcon,
+		Play,
+		SkipBack,
+		SkipForward
+	} from '@lucide/svelte/icons';
 	import { Label } from '@/components/ui/label';
 	import { Input } from '@/components/ui/input';
+	import { BentoCard, BentoGrid } from '@/registry/ui/components/bento-grid';
+
 	const reviews = [
 		{
 			name: 'Jack',
@@ -55,6 +66,50 @@
 			username: '@james',
 			body: "I'm at a loss for words. This is amazing. I love it.",
 			img: 'https://avatar.vercel.sh/james'
+		}
+	];
+
+	const features = [
+		{
+			icon: FileTextIcon,
+			name: 'Save your files',
+			description: 'We automatically save your files as you type.',
+			href: '/',
+			cta: 'Learn more',
+			class: 'lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3'
+		},
+		{
+			icon: FileInputIcon,
+			name: 'Full text search',
+			description: 'Search through all your files in one place.',
+			href: '/',
+			cta: 'Learn more',
+			class: 'lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3'
+		},
+		{
+			icon: GlobeIcon,
+			name: 'Multilingual',
+			description: 'Supports 100+ languages and counting.',
+			href: '/',
+			cta: 'Learn more',
+			class: 'lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4'
+		},
+		{
+			icon: CalendarIcon,
+			name: 'Calendar',
+			description: 'Use the calendar to filter your files by date.',
+			href: '/',
+			cta: 'Learn more',
+			class: 'lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2'
+		},
+		{
+			icon: BellIcon,
+			name: 'Notifications',
+			description:
+				'Get notified when someone shares a file or mentions you in a comment.',
+			href: '/',
+			cta: 'Learn more',
+			class: 'lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4'
 		}
 	];
 
@@ -309,11 +364,11 @@
 			<form>
 				<div class="grid w-full items-center gap-4">
 					<div class="flex flex-col space-y-1.5">
-						<Label htmlFor="email">Email</Label>
+						<Label for="email">Email</Label>
 						<Input id="email" type="email" placeholder="Enter your email" />
 					</div>
 					<div class="flex flex-col space-y-1.5">
-						<Label htmlFor="password">Password</Label>
+						<Label for="password">Password</Label>
 						<Input
 							id="password"
 							type="password"
@@ -341,11 +396,11 @@
 			<form>
 				<div class="grid w-full items-center gap-4">
 					<div class="flex flex-col space-y-1.5">
-						<Label htmlFor="email">Email</Label>
+						<Label for="email">Email</Label>
 						<Input id="email" type="email" placeholder="Enter your email" />
 					</div>
 					<div class="flex flex-col space-y-1.5">
-						<Label htmlFor="password">Password</Label>
+						<Label for="password">Password</Label>
 						<Input
 							id="password"
 							type="password"
@@ -380,4 +435,109 @@
 			}}
 		/>
 	</Button>
+</div>
+
+<div class="py-12">
+	<h2 class="mb-8 text-center text-3xl font-bold">Bento Grid with Snippets</h2>
+
+	<BentoGrid class="lg:grid-rows-3">
+		{#each features as feature (feature.name)}
+			<BentoCard
+				icon={feature.icon}
+				name={feature.name}
+				description={feature.description}
+				href={feature.href}
+				cta={feature.cta}
+				class={feature.class}
+			>
+				{#snippet background()}
+					<div
+						class="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-orange-500/20 opacity-60"
+					></div>
+				{/snippet}
+			</BentoCard>
+		{/each}
+	</BentoGrid>
+
+	<div class="mt-12">
+		<h3 class="mb-4 text-center text-xl font-semibold">
+			Custom Backgrounds Per Card
+		</h3>
+		<BentoGrid class="lg:grid-rows-3">
+			<BentoCard
+				icon={FileTextIcon}
+				name="Save your files"
+				description="We automatically save your files as you type."
+				href="/"
+				cta="Learn more"
+				class="lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3"
+			>
+				{#snippet background()}
+					<div
+						class="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 opacity-20 blur-3xl"
+					></div>
+				{/snippet}
+			</BentoCard>
+
+			<BentoCard
+				icon={FileInputIcon}
+				name="Full text search"
+				description="Search through all your files in one place."
+				href="/"
+				cta="Learn more"
+				class="lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3"
+			>
+				{#snippet background()}
+					<div
+						class="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 opacity-20 blur-3xl"
+					></div>
+				{/snippet}
+			</BentoCard>
+
+			<BentoCard
+				icon={GlobeIcon}
+				name="Multilingual"
+				description="Supports 100+ languages and counting."
+				href="/"
+				cta="Learn more"
+				class="lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4"
+			>
+				{#snippet background()}
+					<div
+						class="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 opacity-20 blur-3xl"
+					></div>
+				{/snippet}
+			</BentoCard>
+
+			<BentoCard
+				icon={CalendarIcon}
+				name="Calendar"
+				description="Use the calendar to filter your files by date."
+				href="/"
+				cta="Learn more"
+				class="lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2"
+			>
+				{#snippet background()}
+					<div
+						class="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-orange-500 to-red-500 opacity-20 blur-3xl"
+					></div>
+				{/snippet}
+			</BentoCard>
+
+			<BentoCard
+				icon={BellIcon}
+				name="Notifications"
+				description="Get notified when someone shares a file or mentions you in a comment."
+				href="/"
+				cta="Learn more"
+				class="lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4"
+			>
+				{#snippet background()}
+					<div
+						class="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gradient-to-br from-yellow-500 to-amber-500 opacity-20 blur-3xl"
+					></div>
+				{/snippet}
+			</BentoCard>
+		</BentoGrid>
+	</div>
 </div>
