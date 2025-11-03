@@ -4,6 +4,24 @@
   "homepage": "https://arcana-ui.com",
   "items": [
     {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "A special effect component that creates a moving beam animation along the border of an element.",
+      "registryDependencies": [],
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "src/lib/registry/ui/special-effects/border-beam/index.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "src/lib/registry/ui/special-effects/border-beam/border-beam.svelte",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "marquee",
       "type": "registry:ui",
       "title": "Marquee",
@@ -83,6 +101,7 @@
       "type": "registry:ui",
       "title": "Number Ticker",
       "description": "A text component that animates numbers counting up or down with a smooth ticker effect.",
+      "registryDependencies": [],
       "dependencies": ["motion"],
       "files": [
         {

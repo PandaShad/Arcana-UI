@@ -6,6 +6,19 @@
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
 	import { cn } from '$lib/utils';
 	import NumberTicker from '$lib/registry/ui/text-animations/number-ticker/number-ticker.svelte';
+	import BorderBeam from '$lib/registry/ui/special-effects/border-beam/border-beam.svelte';
+	import {
+		Card,
+		CardContent,
+		CardDescription,
+		CardFooter,
+		CardHeader,
+		CardTitle
+	} from '@/components/ui/card';
+	import { Button } from '@/components/ui/button';
+	import { Play, SkipBack, SkipForward } from '@lucide/svelte/icons';
+	import { Label } from '@/components/ui/label';
+	import { Input } from '@/components/ui/input';
 	const reviews = [
 		{
 			name: 'Jack',
@@ -218,16 +231,153 @@
 			class="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"
 		/>
 	</div>
-	<div class="flex flex-col gap-8 items-center">
+	<div class="flex flex-col gap-8 items-center border">
 		<h2 class="text-2xl font-bold">Number Ticker Examples Down</h2>
 		<NumberTicker
 			value={100}
 			direction="down"
 			class="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"
 		/>
+		<BorderBeam />
 	</div>
-	<div class="flex flex-col gap-8 items-center">
+	<div class="flex flex-col gap-8 items-center border">
 		<h2 class="text-2xl font-bold">Number Ticker Examples Default</h2>
 		<NumberTicker value={100} />
+		<BorderBeam />
 	</div>
+</div>
+
+<div class="flex items-center justify-center py-12">
+	<div class="relative h-[500px] w-xl overflow-hidden">
+		<BorderBeam />
+	</div>
+</div>
+
+<div class="grid w-full grid-cols-1 gap-12 py-12 md:grid-cols-2">
+	<Card class="relative w-[350px] overflow-hidden">
+		<CardHeader>
+			<CardTitle>Now Playing</CardTitle>
+			<CardDescription>Stairway to Heaven - Led Zeppelin</CardDescription>
+		</CardHeader>
+		<CardContent>
+			<div class="flex flex-col items-center gap-4">
+				<div
+					class="h-48 w-48 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500"
+				></div>
+				<div class="bg-secondary h-1 w-full rounded-full">
+					<div class="bg-primary h-full w-1/3 rounded-full"></div>
+				</div>
+				<div class="text-muted-foreground flex w-full justify-between text-sm">
+					<span>2:45</span>
+					<span>8:02</span>
+				</div>
+			</div>
+		</CardContent>
+		<CardFooter class="flex justify-center gap-4">
+			<Button variant="outline" size="icon" class="rounded-full">
+				<SkipBack class="size-4" />
+			</Button>
+			<Button size="icon" class="rounded-full">
+				<Play class="size-4" />
+			</Button>
+			<Button variant="outline" size="icon" class="rounded-full">
+				<SkipForward class="size-4" />
+			</Button>
+		</CardFooter>
+		<BorderBeam
+			duration={6}
+			size={400}
+			class="from-transparent via-red-500 to-transparent"
+		/>
+		<BorderBeam
+			duration={6}
+			delay={3}
+			size={400}
+			borderWidth={2}
+			class="from-transparent via-blue-500 to-transparent"
+		/>
+	</Card>
+
+	<Card class="relative w-[350px] overflow-hidden">
+		<CardHeader>
+			<CardTitle>Login</CardTitle>
+			<CardDescription>
+				Enter your credentials to access your account.
+			</CardDescription>
+		</CardHeader>
+		<CardContent>
+			<form>
+				<div class="grid w-full items-center gap-4">
+					<div class="flex flex-col space-y-1.5">
+						<Label htmlFor="email">Email</Label>
+						<Input id="email" type="email" placeholder="Enter your email" />
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<Label htmlFor="password">Password</Label>
+						<Input
+							id="password"
+							type="password"
+							placeholder="Enter your password"
+						/>
+					</div>
+				</div>
+			</form>
+		</CardContent>
+		<CardFooter class="flex justify-between">
+			<Button variant="outline">Register</Button>
+			<Button>Login</Button>
+		</CardFooter>
+		<BorderBeam duration={8} size={100} />
+	</Card>
+
+	<Card class="relative w-[350px] overflow-hidden">
+		<CardHeader>
+			<CardTitle>Login</CardTitle>
+			<CardDescription>
+				Enter your credentials to access your account.
+			</CardDescription>
+		</CardHeader>
+		<CardContent>
+			<form>
+				<div class="grid w-full items-center gap-4">
+					<div class="flex flex-col space-y-1.5">
+						<Label htmlFor="email">Email</Label>
+						<Input id="email" type="email" placeholder="Enter your email" />
+					</div>
+					<div class="flex flex-col space-y-1.5">
+						<Label htmlFor="password">Password</Label>
+						<Input
+							id="password"
+							type="password"
+							placeholder="Enter your password"
+						/>
+					</div>
+				</div>
+			</form>
+		</CardContent>
+		<CardFooter class="flex justify-between">
+			<Button variant="outline">Register</Button>
+			<Button>Login</Button>
+		</CardFooter>
+		<BorderBeam
+			duration={4}
+			size={300}
+			reverse
+			class="from-transparent via-green-500 to-transparent"
+		/>
+	</Card>
+
+	<Button class="relative overflow-hidden" size="lg" variant="outline">
+		Buy Now
+		<BorderBeam
+			size={40}
+			initialOffset={20}
+			class="from-transparent via-yellow-500 to-transparent"
+			transition={{
+				type: 'spring',
+				stiffness: 60,
+				damping: 20
+			}}
+		/>
+	</Button>
 </div>
